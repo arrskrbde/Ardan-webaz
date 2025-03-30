@@ -1,0 +1,499 @@
+<!DOCTYPE html>  
+<html lang="id">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Surat Cinta Gemas</title>  
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">  
+    <style>  
+        /* BACKGROUND CUTE */  
+        body {  
+            margin: 0;  
+            padding: 0;  
+            font-family: 'Quicksand', sans-serif;  
+            background: #ffebee;  
+            height: 100vh;  
+            overflow: hidden;  
+            display: flex;  
+            justify-content: center;  
+            align-items: center;  
+            position: relative;  
+        }  /* JANTUNG GEMAS */  
+    .jantung-container {  
+        position: absolute;  
+        z-index: 100;  
+        cursor: pointer;  
+        text-align: center;  
+        transition: all 0.3s;  
+        animation: mengambang 3s ease-in-out infinite;  
+    }  
+
+    @keyframes mengambang {  
+        0%, 100% { transform: translateY(0) rotate(-5deg); }  
+        50% { transform: translateY(-20px) rotate(5deg); }  
+    }  
+
+    .jantung-btn {  
+        font-size: 120px;  
+        color: #ff4d6d;  
+        text-shadow: 0 0 25px rgba(255, 77, 109, 0.5);  
+        animation: detakJantung 1.2s infinite;  
+        display: inline-block;  
+        filter: drop-shadow(0 5px 15px rgba(255, 77, 109, 0.3));  
+        transition: all 0.3s;  
+    }  
+
+    @keyframes detakJantung {  
+        0% { transform: scale(1); }  
+        15% { transform: scale(1.3); }  
+        30% { transform: scale(0.9); }  
+        45% { transform: scale(1.2); }  
+        60% { transform: scale(1); }  
+        75% { transform: scale(1.1); }  
+        100% { transform: scale(1); }  
+    }  
+
+    .jantung-btn:hover {  
+        transform: scale(1.2) rotate(10deg);  
+    }  
+
+    .teks-klik {  
+        color: #ff758f;  
+        font-weight: 700;  
+        margin-top: 20px;  
+        font-size: 24px;  
+        text-shadow: 0 2px 5px rgba(255, 117, 143, 0.2);  
+        font-family: 'Baloo 2', cursive;  
+        animation: berkedip 2s infinite;  
+    }  
+
+    @keyframes berkedip {  
+        0%, 100% { opacity: 1; }  
+        50% { opacity: 0.7; }  
+    }  
+
+    /* SURAT CINTA GEMAS */  
+    .surat-cinta {  
+        background: white;  
+        border-radius: 20px;  
+        box-shadow: 0 10px 40px rgba(255, 105, 140, 0.3),  
+                    0 0 0 10px white,  
+                    0 0 0 12px #ff758f;  
+        width: 80%;  
+        max-width: 600px;  
+        padding: 40px;  
+        position: relative;  
+        display: none;  
+        transform: scale(0.5) rotate(-10deg);  
+        opacity: 0;  
+        transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6);  
+        z-index: 50;  
+    }  
+
+    .surat-cinta.muncul {  
+        display: block;  
+        transform: scale(1) rotate(0deg);  
+        opacity: 1;  
+        animation: munculGemas 1s;  
+    }  
+
+    @keyframes munculGemas {  
+        0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }  
+        60% { transform: scale(1.1) rotate(2deg); }  
+        100% { transform: scale(1) rotate(0deg); opacity: 1; }  
+    }  
+
+    h1 {  
+        color: #ff4d6d;  
+        font-size: 2.8em;  
+        margin-bottom: 30px;  
+        text-align: center;  
+        font-family: 'Baloo 2', cursive;  
+        text-shadow: 0 2px 5px rgba(255, 77, 109, 0.2);  
+        transform: scale(0.8);  
+        opacity: 0;  
+        transition: all 0.5s 0.3s;  
+    }  
+
+    .surat-cinta.muncul h1 {  
+        transform: scale(1);  
+        opacity: 1;  
+        animation: gemasJudul 0.8s 0.3s;  
+    }  
+
+    @keyframes gemasJudul {  
+        0%, 100% { transform: scale(1); }  
+        50% { transform: scale(1.1); }  
+    }  
+
+    .pesan {  
+        font-size: 1.2em;  
+        line-height: 1.8;  
+        color: #555;  
+        margin-bottom: 30px;  
+        opacity: 0;  
+        transform: translateY(20px);  
+        transition: all 0.8s 0.6s;  
+    }  
+
+    .surat-cinta.muncul .pesan {  
+        opacity: 1;  
+        transform: translateY(0);  
+    }  
+
+    .tanda-tangan {  
+        font-family: 'Baloo 2', cursive;  
+        font-size: 1.8em;  
+        color: #ff758f;  
+        text-align: right;  
+        margin-top: 30px;  
+        opacity: 0;  
+        transform: translateX(30px);  
+        transition: all 0.8s 1s;  
+    }  
+
+    .surat-cinta.muncul .tanda-tangan {  
+        opacity: 1;  
+        transform: translateX(0);  
+        animation: gemasTandaTangan 1s 1s;  
+    }  
+
+    @keyframes gemasTandaTangan {  
+        0%, 100% { transform: translateX(0); }  
+        25% { transform: translateX(10px); }  
+        75% { transform: translateX(-10px); }  
+    }  
+
+    /* HATI MELAYANG */  
+    .hati-melayang {  
+        position: fixed;  
+        top: 0;  
+        left: 0;  
+        width: 100%;  
+        height: 100%;  
+        pointer-events: none;  
+        z-index: 1;  
+    }  
+
+    .hati {  
+        position: absolute;  
+        font-size: 30px;  
+        color: rgba(255, 77, 109, 0.8);  
+        animation: melayang linear forwards;  
+        opacity: 0;  
+        filter: drop-shadow(0 2px 5px rgba(255, 77, 109, 0.3));  
+    }  
+
+    @keyframes melayang {  
+        0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }  
+        10% { opacity: 1; }  
+        90% { opacity: 1; }  
+        100% { transform: translateY(-100px) translateX(100px) rotate(360deg); opacity: 0; }  
+    }  
+
+    /* STICKER GEMAS */  
+    .sticker {  
+        position: absolute;  
+        font-size: 60px;  
+        z-index: 20;  
+        animation: stickerGemas 3s infinite alternate;  
+        opacity: 0.8;  
+    }  
+
+    @keyframes stickerGemas {  
+        0% { transform: rotate(-10deg) scale(1); }  
+        100% { transform: rotate(10deg) scale(1.1); }  
+    }  
+
+    /* MUSIK PLAYER CUTE */  
+    .musik-player {  
+        position: fixed;  
+        bottom: 25px;  
+        right: 25px;  
+        z-index: 1000;  
+        color: white;  
+        background: #ff758f;  
+        padding: 15px;  
+        border-radius: 50%;  
+        cursor: pointer;  
+        width: 60px;  
+        height: 60px;  
+        display: flex;  
+        align-items: center;  
+        justify-content: center;  
+        box-shadow: 0 5px 15px rgba(255, 117, 143, 0.4);  
+        transition: all 0.3s;  
+        animation: musikPlayerGemas 2s infinite;  
+    }  
+
+    @keyframes musikPlayerGemas {  
+        0%, 100% { transform: scale(1); }  
+        50% { transform: scale(1.1); }  
+    }  
+
+    .musik-player:hover {  
+        transform: scale(1.1) rotate(10deg);  
+        background: #ff4d6d;  
+    }  
+
+    .info-lagu {  
+        position: fixed;  
+        bottom: 35px;  
+        right: 100px;  
+        background: white;  
+        color: #ff758f;  
+        padding: 8px 15px;  
+        border-radius: 20px;  
+        font-size: 14px;  
+        font-weight: 600;  
+        max-width: 200px;  
+        white-space: nowrap;  
+        overflow: hidden;  
+        text-overflow: ellipsis;  
+        box-shadow: 0 3px 10px rgba(255, 117, 143, 0.2);  
+        opacity: 0;  
+        transition: opacity 0.3s;  
+        pointer-events: none;  
+    }  
+
+    /* PARTIKEL GEMAS */  
+    .partikel {  
+        position: fixed;  
+        top: 0;  
+        left: 0;  
+        width: 100%;  
+        height: 100%;  
+        pointer-events: none;  
+        z-index: 10;  
+    }  
+
+    .partikel-item {  
+        position: absolute;  
+        width: 15px;  
+        height: 15px;  
+        background: #ff8fab;  
+        border-radius: 50%;  
+        opacity: 0;  
+        filter: blur(1px);  
+        animation: ledakanGemas 1s ease-out forwards;  
+    }  
+
+    @keyframes ledakanGemas {  
+        0% { transform: scale(0) rotate(0deg); opacity: 1; }  
+        100% { transform: scale(8) rotate(360deg); opacity: 0; }  
+    }  
+
+    /* BINTANG-BINTANG */  
+    .bintang {  
+        position: absolute;  
+        color: #ffd166;  
+        font-size: 20px;  
+        animation: berkedipBintang 2s infinite alternate;  
+        opacity: 0;  
+    }  
+
+    @keyframes berkedipBintang {  
+        0% { opacity: 0.2; transform: scale(0.8); }  
+        100% { opacity: 0.8; transform: scale(1.2); }  
+    }  
+</style>
+
+</head>  
+<body>  
+    <!-- JANTUNG UTAMA -->  
+    <div class="jantung-container" id="jantungContainer">  
+        <div class="jantung-btn">💖</div>  
+        <div class="teks-klik">Klik Aku Dong!</div>  
+    </div>  
+
+    <!-- SURAT CINTA -->  
+    <div class="surat-cinta" id="suratCinta">  
+        <h1>Minal Aidzin Wal Faidzin, Sayang!</h1>  
+        <div class="pesan">  
+            Maafin aku ya, kalau selama ini aku pernah bikin kamu kesel, sedih, atau ngerasa kurang dihargai ☹️☹️ Sadly aku tau aku jauh dari kata sempurna, masih banyak banget kurangnya, masih sering keras kepala dan nyusahin. Tapi satu hal yang aku pastiin, aku selalu sayang kamu, selalu mau belajar buat jadi lebih baik buat kamu.<br><br>  
+              
+            Lebaran tahun ini, aku bersyukur banget masih bisa ada di samping kamu, masih bisa dengerin cerita-cerita kamu, masih bisa lihat kamu dengan segala versi kamu—versi lelah, versi bahagia, versi yang lagi semangat, atau versi yang cuma mau rebahan seharian. �❤️‍🩹 Semuanya aku sayang, semuanya aku hargai.<br><br>  
+              
+            Semoga kita selalu bisa tumbuh bareng, ya? Jadi lebih baik, jadi lebih kuat, dan tetap saling genggam apapun yang terjadi. Aku ngga janji kita bakal selalu lancar, ngga janji semua bakal selalu mudah, tapi aku janji aku bakal selalu ada buat kamu, selalu pilih kamu, selalu bangga punya kamu. Dan aku harap kamu juga bangga punya aku.<br><br>
+            
+            Selamat lebaran, my love. Aku sayang kamu, always and forever! <33
+        </div>  
+        <div class="tanda-tangan">Yang selalu sayang kamu,<br>💖 Aku</div>  
+    </div>  
+
+    <!-- STICKER GEMAS -->  
+    <div class="sticker" style="top: 10%; left: 10%;">✨</div>  
+    <div class="sticker" style="top: 15%; right: 15%;">🥰</div>  
+    <div class="sticker" style="bottom: 20%; left: 20%;">💫</div>  
+    <div class="sticker" style="bottom: 15%; right: 10%;">🌸</div>  
+
+    <!-- PARTIKEL LEDAKAN -->  
+    <div class="partikel" id="partikel"></div>  
+
+    <!-- HATI MELAYANG -->  
+    <div class="hati-melayang" id="hatiMelayang"></div>  
+
+    <!-- BINTANG-BINTANG -->  
+    <div id="bintangContainer"></div>  
+
+    <!-- MUSIK PLAYER -->  
+    <div class="musik-player" id="musikPlayer">🎵</div>  
+    <div class="info-lagu" id="infoLagu">Glue Song (feat. Clairo) - beabadoobee</div>
+
+    <!-- Ganti bagian audio dengan ini -->  
+    <audio id="musikBackground" loop>  
+        <source src="Glue Song feat Clairo.mp3" type="audio/mpeg">  
+        <!-- Backup jika file lokal tidak bekerja -->  
+        <source src="https://audio.jukehost.co.uk/N8nQ1JXQJw4gXq9Hk5l3mWlYjUvL3Q1A" type="audio/mpeg">  
+    </audio>  
+    <audio id="suaraJantung">  
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-heartbeat-with-dribble-1190.mp3" type="audio/mpeg">  
+    </audio>  
+    <audio id="suaraLedakan">  
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-explosion-2759.mp3" type="audio/mpeg">  
+    </audio>  
+    <audio id="suaraGemas">  
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-cute-girl-says-hello-1201.mp3" type="audio/mpeg">  
+    </audio>  
+
+    <script>  
+        // ELEMEN UTAMA  
+        const jantungContainer = document.getElementById('jantungContainer');  
+        const suratCinta = document.getElementById('suratCinta');  
+        const partikel = document.getElementById('partikel');  
+        const hatiMelayang = document.getElementById('hatiMelayang');  
+        const musikPlayer = document.getElementById('musikPlayer');  
+        const infoLagu = document.getElementById('infoLagu');  
+        const bintangContainer = document.getElementById('bintangContainer');  
+          
+        // AUDIO  
+        const musikBackground = document.getElementById('musikBackground');  
+        const suaraJantung = document.getElementById('suaraJantung');  
+        const suaraLedakan = document.getElementById('suaraLedakan');  
+        const suaraGemas = document.getElementById('suaraGemas');  
+
+        // BIKIN BINTANG  
+        function buatBintang() {  
+            for (let i = 0; i < 20; i++) {  
+                const bintang = document.createElement('div');  
+                bintang.className = 'bintang';  
+                bintang.innerHTML = '✨';  
+                bintang.style.left = Math.random() * 100 + 'vw';  
+                bintang.style.top = Math.random() * 100 + 'vh';  
+                bintang.style.animationDelay = Math.random() * 2 + 's';  
+                bintang.style.animationDuration = Math.random() * 3 + 2 + 's';  
+                bintang.style.fontSize = Math.random() * 20 + 10 + 'px';  
+                bintangContainer.appendChild(bintang);  
+            }  
+        }  
+
+        // BIKIN HATI MELAYANG  
+        function buatHatiMelayang() {  
+            const hati = document.createElement('div');  
+            hati.className = 'hati';  
+            hati.innerHTML = ['💖', '💗', '💓', '💘', '💝'][Math.floor(Math.random() * 5)];  
+            hati.style.left = Math.random() * 100 + 'vw';  
+            hati.style.top = '100vh';  
+            hati.style.fontSize = Math.random() * 30 + 20 + 'px';  
+            hati.style.animationDuration = Math.random() * 8 + 5 + 's';  
+            hatiMelayang.appendChild(hati);  
+              
+            setTimeout(() => {  
+                hati.remove();  
+            }, 13000);  
+        }  
+
+        // BIKIN LEDAKAN PARTIKEL  
+        function buatPartikel(x, y) {  
+            suaraLedakan.play();  
+            suaraGemas.play();  
+              
+            for (let i = 0; i < 50; i++) {  
+                setTimeout(() => {  
+                    const partikelItem = document.createElement('div');  
+                    partikelItem.className = 'partikel-item';  
+                    partikelItem.style.left = x + 'px';  
+                    partikelItem.style.top = y + 'px';  
+                    partikelItem.style.backgroundColor = `hsla(${Math.random() * 30 + 330}, 100%, 70%, 0.8)`;  
+                    partikelItem.style.width = partikelItem.style.height = Math.random() * 15 + 5 + 'px';  
+                    partikel.appendChild(partikelItem);  
+                      
+                    setTimeout(() => {  
+                        partikelItem.remove();  
+                    }, 1000);  
+                }, i * 20);  
+            }  
+        }  
+
+        // KLIK JANTUNG  
+        jantungContainer.addEventListener('click', function(e) {  
+            // Dapetin posisi klik  
+            const x = e.clientX;  
+            const y = e.clientY;  
+              
+            // Bikin ledakan  
+            buatPartikel(x, y);  
+              
+            // Hilangin jantung  
+            jantungContainer.style.transform = 'scale(0) rotate(360deg)';  
+            jantungContainer.style.opacity = '0';  
+              
+            // Mainin suara  
+            suaraJantung.play();  
+              
+            // Munculin surat cinta  
+            setTimeout(() => {  
+                suratCinta.classList.add('muncul');  
+                  
+                // Mainin musik  
+                musikBackground.volume = 0.4;  
+                musikBackground.play();  
+                musikPlayer.innerHTML = '🎵';  
+                infoLagu.style.opacity = '1';  
+                infoLagu.textContent = 'Glue Song (feat. Clairo) - beabadoobee';  
+                  
+                // Bikin hati melayang terus  
+                setInterval(buatHatiMelayang, 500);  
+            }, 800);  
+        });  
+
+        // TOGGLE MUSIK  
+        let musikMenyala = false;  
+        musikPlayer.addEventListener('click', function() {  
+            if (musikMenyala) {  
+                musikBackground.pause();  
+                musikPlayer.innerHTML = '🎵';  
+                infoLagu.style.opacity = '0';  
+            } else {  
+                musikBackground.play();  
+                musikPlayer.innerHTML = '🔊';  
+                infoLagu.style.opacity = '1';  
+            }  
+            musikMenyala = !musikMenyala;  
+        });  
+
+        // INFO LAGU PAS HOVER  
+        musikPlayer.addEventListener('mouseenter', function() {  
+            infoLagu.style.opacity = '1';  
+        });  
+
+        musikPlayer.addEventListener('mouseleave', function() {  
+            if (!musikMenyala) {  
+                infoLagu.style.opacity = '0';  
+            }  
+        });  
+
+        // INITIALIZE  
+        buatBintang();  
+        setInterval(buatHatiMelayang, 1000);  
+          
+        // Biar musik bisa play  
+        document.body.addEventListener('click', function() {  
+            musikBackground.play().then(() => {  
+                musikBackground.pause();  
+                musikBackground.currentTime = 0;  
+            }).catch(e => {});  
+        }, { once: true });  
+    </script>
+</body>  
+</html>
